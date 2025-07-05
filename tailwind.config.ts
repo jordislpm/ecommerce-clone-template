@@ -16,8 +16,8 @@ const config: Config = {
       colors: {
         main: "#9BD4E4",
         secundary: "#E37A3F",
-        main_second: "#E4B29B",
-        secundary_second: "#207A8E",
+        main_second: "#207A8E",
+        secundary_second: "#E4B29B",
       },
     },
   },

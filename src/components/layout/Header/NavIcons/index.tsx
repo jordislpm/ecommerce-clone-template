@@ -25,12 +25,12 @@ function NavIcons() {
         setIsProfileOpen((prev) => !prev)
     }
 
-    const handleCart = ()=>{
-        if (isProfileOpen){
+    const handleCart = () => {
+        if (isProfileOpen) {
             setIsProfileOpen(false)
         }
 
-        setIsCartOpen((prev)=>!prev)
+        setIsCartOpen((prev) => !prev)
     }
 
     return (
@@ -45,8 +45,8 @@ function NavIcons() {
             {
                 isProfileOpen &&
                 <div className='absolute p-4 top-12 rounded-md left-0 shadow-[0_3px_10px_rgb(0,0,0,0.2)] z-20'>
-                    <Link href="/">Profile</Link>
-                    <div className='mt-2 cursor-pointer'>Logout</div>
+                    <Link className='hover-underline-main' href="/">Profile</Link>
+                    <div className='mt-2 cursor-pointer hover-underline-main'>Logout</div>
                 </div>
             }
             <Image
@@ -64,7 +64,10 @@ function NavIcons() {
                     width={22}
                     onClick={handleCart}
                 />
-                <div className='absolute -top-4 -right-4 w-6 h-6 bg-secundary rounded-full text-white text-sm flex items-center justify-center'>1</div>
+                <div
+                    className='absolute -top-4 -right-4 w-6 h-6 bg-secundary rounded-full text-white text-sm flex items-center justify-center'
+                >2
+                </div>
             </div>
             {
                 isCartOpen &&

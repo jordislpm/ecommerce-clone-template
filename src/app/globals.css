@@ -10,3 +10,18 @@
     --third-color:#E4B29B;
     --fourth-color: #207A8E;
   }
+
+  
+@layer utilities {
+  .hover-underline-main {
+    @apply border-b-2 border-transparent hover:border-main transition-all duration-200;
+  }
+
+   .hover-scale-link {
+    @apply hover:scale-105 transform transition-transform duration-200;
+  }
+
+
+
+   
+}

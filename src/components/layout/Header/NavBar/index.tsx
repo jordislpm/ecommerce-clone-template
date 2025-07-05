@@ -29,28 +29,28 @@ function NavBar() {
                     </Link>
                     <div className='hidden xl:flex gap-4'>
                         <Link
-                            className='border-b-2 border-transparent hover:border-b-2 hover:border-main text-md text-secundary hover:scale-105 transform transition-transform duration-200'
+                            className='hover-underline-main text-md text-secundary hover-scale-link'
                             href="/"
                         >Home
                         </Link>
                         <Link
-                            className='border-b-2 border-transparent hover:border-b-2 hover:border-main text-md text-secundary hover:scale-105 transform transition-transform duration-200'
+                            className='hover-underline-main text-md text-secundary hover-scale-link'
                             href="/"
                         >Shop
                         </Link>
                         <Link
                             href="/"
-                            className='border-b-2 border-transparent hover:border-b-2 hover:border-main text-md text-secundary hover:scale-105 transform transition-transform duration-200'
+                            className='hover-underline-main text-md text-secundary hover-scale-link'
                         >Deals
                         </Link>
                         <Link
                             href="/"
-                            className='border-b-2 border-transparent hover:border-b-2 hover:border-main text-md text-secundary hover:scale-105 transform transition-transform duration-200'
+                            className='hover-underline-main text-md text-secundary hover-scale-link'
                         >About
                         </Link>
                         <Link
                             href="/"
-                            className='border-b-2 border-transparent hover:border-b-2 hover:border-main text-md text-secundary hover:scale-105 transform transition-transform duration-200'
+                            className='hover-underline-main text-md text-secundary hover-scale-link'
                         >Contact
                         </Link>
                     </div>
