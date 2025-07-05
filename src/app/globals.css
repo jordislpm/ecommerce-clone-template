@@ -21,7 +21,7 @@
     @apply hover:scale-105 transform transition-transform duration-200;
   }
 
-
-
-   
+    .shadow-modal {
+    @apply shadow-[0_3px_10px_rgb(0,0,0,0.2)];
+  }
 }

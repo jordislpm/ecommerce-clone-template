@@ -4,6 +4,14 @@ const nextConfig = {
     locales: ['en', 'es'],
     defaultLocale: 'en',
   },
+  images:{
+    remotePatterns:[
+      {
+        protocol:"https",
+        hostname:"images.pexels.com"
+      }
+    ]
+  }
 };
 
 export default nextConfig;

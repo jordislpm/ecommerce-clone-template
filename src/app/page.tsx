@@ -1,6 +1,10 @@
+import Slider from "../components/share/Slider"
+
 const HomePage = () => {
   return (
-    <div className=''>HomePage</div>
+    <div className=''>
+      <Slider />
+    </div>
   )
 }
 

@@ -44,7 +44,7 @@ function NavIcons() {
             />
             {
                 isProfileOpen &&
-                <div className='absolute p-4 top-12 rounded-md left-0 shadow-[0_3px_10px_rgb(0,0,0,0.2)] z-20'>
+                <div className='absolute p-4 top-12 rounded-md left-0 shadow-modal z-20'>
                     <Link className='hover-underline-main' href="/">Profile</Link>
                     <div className='mt-2 cursor-pointer hover-underline-main'>Logout</div>
                 </div>

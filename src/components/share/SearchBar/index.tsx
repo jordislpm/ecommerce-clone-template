@@ -17,7 +17,7 @@ if (name){
 
     }
     return (
-        <form className='flex ic justify-between gap-4 bg-main p-2 rounded-md flex-1'
+        <form className='flex items-center justify-between gap-4 bg-main p-2 rounded-md flex-1'
             onSubmit={handleSearch}>
             <input type='text' name="name" placeholder='Search' className='text-white flex-1 bg-transparent outline-none placeholder-white' />
             <button className='cursor-pointer'>
