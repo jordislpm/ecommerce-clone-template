@@ -1,12 +1,26 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Header from "../components/layout/Header";
+import Footer from "../components/layout/Footer";
+import { myStoreInfo} from "../contants/general";
+import { Cardo } from 'next/font/google'
+
+const cardo = Cardo({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-secondary',
+})
 
 const inter = Inter({ subsets: ["latin"] });
 
+const {title, description}=myStoreInfo
+
+
+
 export const metadata: Metadata = {
-  title: "Lama Dev E-Commerce Application",
-  description: "A complete e-commerce application with Next.js and Wix",
+  title: title,
+  description: description,
 };
 
 export default function RootLayout({
@@ -16,7 +30,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={cardo.className}>
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
