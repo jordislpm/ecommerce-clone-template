@@ -25,3 +25,11 @@
     @apply shadow-[0_3px_10px_rgb(0,0,0,0.2)];
   }
 }
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide{
+  scrollbar-width: none;
+}

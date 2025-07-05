@@ -63,7 +63,7 @@ function Slider() {
                         key={slide.id}
                     >
                         {/* TEXT CONTAINER */}
-                        <div className="h-1/2 xl:w-1/2 xl:h-full flex flex-col items-center justify-center gap-8 text-center">
+                        <div className="h-1/2 xl:w-1/2 xl:h-full flex flex-col items-center justify-center gap-8 text-center p-4">
                             <h2 className="text-xl lg:text-3xl 2xl:text-5xl">
                                 {slide.description}
                             </h2>
