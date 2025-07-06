@@ -2,13 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --main-color: #9bd4e4;
-  --secundary-color: #e37a3f;
-  --third-color: #e4b29b;
-  --fourth-color: #207a8e;
-}
-
 @layer utilities {
   .hover-underline-main {
     @apply border-b-2 border-transparent hover:border-main transition-all duration-200;

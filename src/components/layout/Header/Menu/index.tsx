@@ -14,7 +14,7 @@ function Menu() {
             {/* <Image src="/hamburger-menu.svg" width={28} height={28} alt='menu-button' className='cursor-pointer text-orange-500 hover:text-blue-500'
                 onClick={() => setOpen(!open)} /> */}
             {open && (
-                <div className='absolute bg-main text-secundary left-0 top-20 w-full h-[calc(100vh-80px)] flex flex-col items-center justify-center gap-8 text-xl z-10'>
+                <div className='absolute bg-main text-secundary left-0 top-20 w-full h-[calc(100vh-80px)] flex flex-col items-center justify-center gap-8 text-xl z-20'>
                     <Link href="/">Home</Link>
                     <Link href="/">Shop</Link>
                     <Link href="/">Deals</Link>
