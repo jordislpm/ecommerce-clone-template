@@ -6,7 +6,15 @@ import { exampleProducts } from '../../../contants/temporaryData';
 import { ProductItem } from '../../../types';
 import ProductCard from '../ProductCard';
 
-function ProductList() {
+
+interface ProductListProps {
+  categoryId: string;
+  limit?: number;
+  searchParams?: any;
+}
+
+
+async function ProductList({categoryId, limit, searchParams}:ProductListProps) {
   return (
  <div className="mt-12 flex gap-x-8 gap-y-16 justify-between flex-wrap">
       {exampleProducts.map((product: ProductItem) => (

@@ -1,0 +1,26 @@
+"use client"
+import React from 'react'
+import ButtonRound from '../ButtonRound'
+import Image from 'next/image'
+
+function PromotionalSection() {
+  return (
+   <div className="hidden bg-secundary px-4 sm:flex justify-between h-64">
+        <div className="w-2/3 flex flex-col items-center justify-center gap-8">
+          <h1 className="text-4xl font-semibold leading-[48px] text-gray-700">
+            Grab up to 50% off on
+            <br /> Selected Products
+          </h1>
+          <ButtonRound type='second' text='Buy Now' buttonAction={() => { }} />
+          {/* <button className="rounded-3xl bg-main text-white w-max py-3 px-5 text-sm">
+            Buy Now
+          </button> */}
+        </div>
+        <div className="relative w-1/3">
+          <Image src="/happy_boy.png" alt="" fill className="object-contain" />
+        </div>
+      </div>
+  )
+}
+
+export default PromotionalSection

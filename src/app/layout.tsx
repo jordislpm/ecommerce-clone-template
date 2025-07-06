@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
-import { myStoreInfo} from "../contants/general";
+import { myStoreInfo } from "../contants/general";
 import { Cardo } from 'next/font/google'
 
 const cardo = Cardo({
@@ -14,7 +14,7 @@ const cardo = Cardo({
 
 const inter = Inter({ subsets: ["latin"] });
 
-const {title, description}=myStoreInfo
+const { title, description } = myStoreInfo
 
 
 

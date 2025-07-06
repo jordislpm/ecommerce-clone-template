@@ -1,9 +1,21 @@
-import { SlideType } from "../types";
+import { MyStoreInfoType, SlideType } from "../types";
 
-export const myStoreInfo = {
-    title: "E-Commerce",
+export const myStoreInfo: MyStoreInfoType = {
+    title: "Oli Store",
     description: "Encuentra la mejor ropa para niños con estilo, comodidad y calidad. En nuestra tienda infantil te ofrecemos ropa para bebés, niños y niñas de 0 a 12 años, con diseños modernos, divertidos y duraderos. ¡Viste a tus hijos con lo mejor al mejor precio!",
+    address: "Calle El Carmen, Local de Nancy la decoradora, Frente a Pica Pollo Charlie, Las Terrenas, Samana, R.D.",
+    email: "info@olistore.com",
+    phone: "+1 829 268 2437",
+    socialMedia:{
+      instagram:"https://www.instagram.com/tu_oli_store?igsh=MWVqYjRlazludjRreg==",
+      facebook:"https://www.facebook.com/share/1HnMGwucYP/?mibextid=wwXIfr",
+      youtube:null,
+      pinterest:null,
+      x:null
+    }
 }
+
+
 
 
 export const slidesData: SlideType[] = [
