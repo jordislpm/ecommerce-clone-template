@@ -1,7 +1,7 @@
 "use client"
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { kidsClothingCategories } from '../../../contants/temporaryData';
 import CategoryCard from '../CategoryCard';
 
@@ -12,6 +12,8 @@ function CategoryList() {
 
 
     const scrollRef = useRef<HTMLDivElement>(null)
+    const [atStart, setAtStart] = useState(true);
+    const [atEnd, setAtEnd] = useState(false);
 
     const scroll = (direction: 'left' | 'right') => {
         if (scrollRef.current) {
@@ -22,6 +24,29 @@ function CategoryList() {
             })
         }
     }
+
+    const checkPosition = () => {
+        const el = scrollRef.current;
+        if (!el) return;
+
+        const { scrollLeft, scrollWidth, clientWidth } = el;
+
+        const isAtStart = scrollLeft <= 0;
+        const isAtEnd = scrollLeft + clientWidth >= scrollWidth - 1;
+
+        setAtStart(isAtStart);
+        setAtEnd(isAtEnd);
+    };
+
+    useEffect(() => {
+        const el = scrollRef.current;
+        if (!el) return;
+
+        el.addEventListener("scroll", checkPosition);
+        checkPosition();
+
+        return () => el.removeEventListener("scroll", checkPosition);
+    }, []);
 
     return (
         <div className="relative px-4">
@@ -41,17 +66,17 @@ function CategoryList() {
                 </div>
             </div>
             {/*RIGT BUTTON */}
-                <div
-                    onClick={() => scroll('right')}
-                    className='hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white p-2 rounded-full shadow '>
-                    <Image src='/next.png' alt='' height={45} width={45} />
-                </div>
-                {/*LEFT BUTTON */}
-                <div
-                    onClick={() => scroll('left')}
-                    className='hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white p-2 rounded-full shadow rotate-180'>
-                    <Image src='/next.png' alt='' height={45} width={45} />
-                </div>
+            {!atEnd && <div
+                onClick={() => scroll('right')}
+                className='hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white p-2 rounded-full shadow '>
+                <Image src='/next.png' alt='' height={45} width={45} />
+            </div>}
+            {/*LEFT BUTTON */}
+            {!atStart && <div
+                onClick={() => scroll('left')}
+                className='hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white p-2 rounded-full shadow rotate-180'>
+                <Image src='/next.png' alt='' height={45} width={45} />
+            </div>}
         </div>
     );
 };

@@ -11,8 +11,13 @@ export type ProductItem = {
   _id: string;
   slug: string;
   name: string;
+  description?: string;
   price?: {
     price: number;
+    discountedPrice?: number;
+  };
+  stock?: {
+    quantity: number;
   };
   media?: {
     mainMedia?: {
@@ -30,7 +35,34 @@ export type ProductItem = {
     title: string;
     description: string;
   }>;
+  variants?: VariantProductItem[];
+  productOptions?: ProductOptionProductItem[];
 };
+
+export type VariantProductItem = {
+  _id: string;
+  option: string;
+  value: string;
+  price?: {
+    price: number;
+    discountedPrice?: number;
+  };
+  stock?: {
+    quantity: number;
+    inStock?: true
+  };
+  //change this later
+  choices: any
+};
+
+export type  ProductOptionProductItem = {
+    name: string;
+    choices: Array<{
+      description: string;
+      value: string;
+
+    }>;
+  };
 
 export type CategoryItem = {
   _id: string;

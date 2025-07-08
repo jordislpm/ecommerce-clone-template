@@ -7,7 +7,7 @@ import Image from 'next/image';
 
 function Slider() {
     const [current, setCurrent] = useState<number>(0);
-
+    
     const touchStartX = useRef<number | null>(null);
     const touchEndX = useRef<number | null>(null);
 
@@ -36,6 +36,8 @@ function Slider() {
         touchStartX.current = null;
         touchEndX.current = null;
     };
+
+
 
 
     useEffect(() => {

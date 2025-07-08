@@ -11,6 +11,7 @@ export const exampleProducts: ProductItem[] = [
         image: { url: "/fakeClothes/boy_tshirt.jpg" },
       },
       items: [
+         { image: { url: "/fakeClothes/boy_tshirt.jpg" } },
         { image: { url: "/fakeClothes/boy_tshirt-2.jpg" } },
         { image: { url: "/fakeClothes/boy_tshirt-1.jpg" } },
       ],
@@ -33,7 +34,7 @@ export const exampleProducts: ProductItem[] = [
         image: { url: "/fakeClothes/boy-tshirts.jpg" },
       },
       items: [
-        { image: { url: "/fakeClothes/boy-tshirts1.jpg" } },
+        { image: { url: "/fakeClothes/boy-tshirts.jpg" } },
         { image: { url: "/fakeClothes/boy-tshirts1.jpg" } },
       ],
     },
@@ -55,7 +56,7 @@ export const exampleProducts: ProductItem[] = [
         image: { url: "/fakeClothes/2boy-tshirts.jpg" },
       },
       items: [
-        { image: { url: "/fakeClothes/2boy-tshirts-2.jpg" } },
+        { image: { url: "/fakeClothes/2boy-tshirts.jpg" } },
         { image: { url: "/fakeClothes/2boy-tshirts-2.jpg" } },
       ],
     },
@@ -77,6 +78,7 @@ export const exampleProducts: ProductItem[] = [
         image: { url: "/fakeClothes/girl-purple.jpg" },
       },
       items: [
+         { image: { url: "/fakeClothes/girl-purple.jpg" } },
         { image: { url: "/fakeClothes/girl-purple-1.jpg" } },
         { image: { url: "/fakeClothes/girl-purple-2.jpg" } },
       ],
@@ -99,6 +101,7 @@ export const exampleProducts: ProductItem[] = [
         image: { url: "/fakeClothes/girl-stitch-outfit.jpg" },
       },
       items: [
+         { image: { url: "/fakeClothes/girl-stitch-outfit.jpg" } },
         { image: { url: "/fakeClothes/girl-stitch-outfit-1.jpg" } },
         { image: { url: "/fakeClothes/girl-stitch-outfit-2.jpg" } },
       ],
@@ -121,6 +124,7 @@ export const exampleProducts: ProductItem[] = [
         image: { url: "/fakeClothes/boy-blue-dino-beach-outfit.jpg" },
       },
       items: [
+         { image: { url: "/fakeClothes/boy-blue-dino-beach-outfit.jpg" } },
         { image: { url: "/fakeClothes/boy-blue-dino-beach-outfit-1.jpg" } },
         { image: { url: "/fakeClothes/boy-blue-dino-beach-outfit-2.jpg" } },
         { image: { url: "/fakeClothes/boy-blue-dino-beach-outfit-3.jpg" } },
@@ -144,6 +148,7 @@ export const exampleProducts: ProductItem[] = [
         image: { url: "/fakeClothes/unisex-baby-6-piece-Bodysuits.jpg" },
       },
       items: [
+         { image: { url: "/fakeClothes/unisex-baby-6-piece-Bodysuits.jpg" } },
         { image: { url: "/fakeClothes/unisex-baby-6-piece-Bodysuits-1.jpg" } },
         { image: { url: "/fakeClothes/unisex-baby-6-piece-Bodysuits-2.jpg" } },
         { image: { url: "/fakeClothes/unisex-baby-6-piece-Bodysuits-3.jpg" } },
@@ -167,6 +172,9 @@ export const exampleProducts: ProductItem[] = [
         image: { url: "/fakeClothes/Infant-Girl-Outfits-Long-Sleeve.jpg" },
       },
       items: [
+           {
+          image: { url: "/fakeClothes/Infant-Girl-Outfits-Long-Sleeve.jpg" },
+        },
         {
           image: { url: "/fakeClothes/Infant-Girl-Outfits-Long-Sleeve-1.jpg" },
         },
@@ -184,6 +192,48 @@ export const exampleProducts: ProductItem[] = [
     ],
   },
 ];
+
+export const singleProduct: ProductItem = {
+  _id: "1",
+  slug: "hurley-soft-coral-tshirt",
+  name: "Hurley Boys' Soft Cloud Slub T-Shirt – Faded Coral",
+  description:
+    "Hurley boys' soft cloud slub t-shirt in Faded Coral. Lightweight, stylish, and made for everyday comfort.",
+  price: {
+    price: 18.99,
+    discountedPrice: 12.99,
+  },
+  media: {
+    mainMedia: {
+      image: { url: "/fakeClothes/boy_tshirt.jpg" },
+    },
+    items: [
+      { image: { url: "/fakeClothes/boy_tshirt.jpg" } },
+      { image: { url: "/fakeClothes/boy_tshirt-2.jpg" } },
+      { image: { url: "/fakeClothes/boy_tshirt-1.jpg" } },
+    ],
+  },
+  additionalInfoSections: [
+    {
+      title: "shortDesc",
+      description:
+        "Hurley boys' soft cloud slub t-shirt in Faded Coral. Lightweight, stylish, and made for everyday comfort.",
+    },
+    {
+      title: "Material",
+      description: "100% Cotton. Machine washable. Imported.",
+    },
+    {
+      title: "Fit & Style",
+      description: "Regular fit with crew neck. Tagless label for comfort.",
+    },
+  ],
+  stock: {
+    quantity: 25,
+  },
+  variants: [],
+  productOptions: [],
+};
 
 export const kidsClothingCategories: CategoryItem[] = [
   {
