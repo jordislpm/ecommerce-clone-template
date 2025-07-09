@@ -2,7 +2,8 @@
 import { useState } from "react";
 import { getWixProducts } from "../../../services/wixClient/products/getWixProducts";
 import { ProductItem } from "../../../types";
-import { formatProductResponse } from "../../../lib/format/formatResponse";
+import { formatProductResponse } from "../../../lib/format/formatProductResponse";
+
 
 export function useClientGetProducts() {
   const [products, setProducts] = useState<ProductItem[] | null>(null);

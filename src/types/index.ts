@@ -9,7 +9,7 @@ export type SlideType = {
 
 export type ProductItem = {
    _id?: string;
-  slug: string;
+  slug?: string;
   name: string;
   description?: string;
   price?: {
@@ -64,10 +64,12 @@ export type  ProductOptionProductItem = {
     }>;
   };
 
-export type CategoryItem = {
+export type CollectionItem = {
   _id: string;
   name: string;
   slug: string;
+  description?: string;
+  numberOfProducts?: number;
   media?: {
     mainMedia?: {
       image?: {
@@ -76,6 +78,9 @@ export type CategoryItem = {
     };
   };
 };
+
+
+
 
 export type MyStoreInfoType = {
   title: string;

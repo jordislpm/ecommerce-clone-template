@@ -1,14 +1,16 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import { CategoryItem } from '../../../types'
+import { CollectionItem } from '../../../types'
 
 
 interface CategoryCardProps {
-    item: CategoryItem
+    item: CollectionItem
 }
 
-function CategoryCard({ item }: CategoryCardProps) {
+function CollectionCard({ item }: CategoryCardProps) {
+
+    console.log(item._id)
     return (
         <Link
             href={`/list?cat=${item.slug}`}
@@ -31,4 +33,4 @@ function CategoryCard({ item }: CategoryCardProps) {
     )
 }
 
-export default CategoryCard
+export default CollectionCard

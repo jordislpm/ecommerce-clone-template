@@ -1,11 +1,12 @@
-import { formatProductResponse } from "../../../lib/format/formatResponse";
+
+import { formatProductResponse } from "../../../lib/format/formatProductResponse";
 import { getWixProducts } from "../../../services/wixClient/products/getWixProducts";
 
 export async function getServerProducts(
   categoryId?: string,
-  limit?: number
+  limit?: number,
+  searchParams?: any
 ) {
-  console.log("getServerProducts", { categoryId, limit });
-  const items = await getWixProducts({ categoryId, limit });
+  const items = await getWixProducts({ categoryId, limit, searchParams });
   return items.map(formatProductResponse);
 }

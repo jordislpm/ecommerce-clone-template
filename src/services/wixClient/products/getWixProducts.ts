@@ -1,21 +1,53 @@
-import { wixClient } from "../../../lib/wixClients/wixClient";
+
+import { wixClientServerApi } from "../../../lib/wixClients/WixClientServer";
 
 
 interface GetWixProducts {
   categoryId?: string;
   limit?: number;
+  searchParams?: any;
 }
 
-export async function getWixProducts({ categoryId, limit }: GetWixProducts) {
-  let query = wixClient.products.queryProducts();
+export async function getWixProducts({ categoryId, limit, searchParams }: GetWixProducts = {}) {
+  const PRODUCT_PER_PAGE = 20;
+  const wixClient = await wixClientServerApi();
 
-  if (categoryId?.trim()) {
-    query = query.hasSome("collectionIds", [categoryId]);
-  }
-  if (typeof limit === "number" && limit > 0) {
-    query = query.limit(limit);
+  let productQuery = wixClient.products.queryProducts();
+
+  if (searchParams?.name) {
+    productQuery = productQuery.startsWith("name", searchParams.name);
   }
 
-  const response = await query.find(); // sin errores si no limit ni cat
-  return response.items;
+  if (categoryId) {
+    productQuery = productQuery.eq("collectionIds", categoryId);
+  }
+
+  if (searchParams?.type) {
+    productQuery = productQuery.hasSome("productType", [searchParams.type]);
+  } else {
+    productQuery = productQuery.hasSome("productType", ["physical", "digital"]);
+  }
+
+  if (searchParams?.min) {
+    productQuery = productQuery.gt("priceData.price", searchParams.min);
+  }
+
+  if (searchParams?.max) {
+    productQuery = productQuery.lt("priceData.price", searchParams.max);
+  }
+
+  if (searchParams?.sort) {
+    const [sortType, sortBy] = searchParams.sort.split(" ");
+    if (sortType === "asc") productQuery = productQuery.ascending(sortBy);
+    if (sortType === "desc") productQuery = productQuery.descending(sortBy);
+  }
+
+  productQuery = productQuery.limit(limit || PRODUCT_PER_PAGE);
+
+  if (searchParams?.page) {
+    productQuery = productQuery.skip(parseInt(searchParams.page) * (limit || PRODUCT_PER_PAGE));
+  }
+
+  const res = await productQuery.find();
+  return res.items;
 }

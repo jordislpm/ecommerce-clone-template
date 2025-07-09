@@ -3,10 +3,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useRef, useState } from 'react'
 import { kidsClothingCategories } from '../../../contants/temporaryData';
-import CategoryCard from '../CategoryCard';
+import CollectionCard from '../CollectionCard';
+import { CollectionItem } from '../../../types';
+
+interface CollectionListProps {
+collections: CollectionItem[];
+}
 
 
-function CategoryList() {
+function CollectionList({collections}:CollectionListProps) {
 
     const [current, setCurrent] = useState(0);
 
@@ -57,8 +62,8 @@ function CategoryList() {
                 ref={scrollRef}
                 style={{ transform: `translateX(-${current * 100}px)` }}>
                 <div className="flex gap-4 md:gap-8">
-                    {kidsClothingCategories.map((item) => (
-                        <CategoryCard
+                    {collections.map((item) => (
+                        <CollectionCard
                             key={item._id}
                             item={item}
                         />
@@ -68,17 +73,17 @@ function CategoryList() {
             {/*RIGT BUTTON */}
             {!atEnd && <div
                 onClick={() => scroll('right')}
-                className='hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white p-2 rounded-full shadow '>
+                className='hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-secundary hover:bg-main p-2 rounded-full shadow '>
                 <Image src='/next.png' alt='' height={45} width={45} />
             </div>}
             {/*LEFT BUTTON */}
             {!atStart && <div
                 onClick={() => scroll('left')}
-                className='hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white p-2 rounded-full shadow rotate-180'>
+                className='hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-secundary hover:bg-main p-2 rounded-full shadow rotate-180'>
                 <Image src='/next.png' alt='' height={45} width={45} />
             </div>}
         </div>
     );
 };
 
-export default CategoryList;
+export default CollectionList;

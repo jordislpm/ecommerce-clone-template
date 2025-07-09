@@ -1,4 +1,4 @@
-import { CategoryItem, ProductItem } from "../types";
+import {  CollectionItem, ProductItem } from "../types";
 
 export const exampleProducts: ProductItem[] = [
   {
@@ -235,7 +235,7 @@ export const singleProduct: ProductItem = {
   productOptions: [],
 };
 
-export const kidsClothingCategories: CategoryItem[] = [
+export const kidsClothingCategories: CollectionItem[] = [
   {
     _id: "8c4f2bfb-57f6-2b87-b53b-b48b9613a67c",
     name: "T-Shirts",
@@ -250,8 +250,8 @@ export const kidsClothingCategories: CategoryItem[] = [
   },
   {
     _id: "2",
-    name: "f4bded91-7788-2a72-f073-f82a1194148a",
-    slug: "shirts-blouses",
+    name: "Shirts & Blouses",
+    slug: "shirts",
     media: {
       mainMedia: {
         image: {

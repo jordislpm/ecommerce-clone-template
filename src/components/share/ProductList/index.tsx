@@ -8,6 +8,7 @@ import ProductCard from '../ProductCard';
 import { getServerProducts } from '../../../hooks/server/products/getServerGetProducts';
 
 
+
 interface ProductListProps {
   categoryId: string;
   limit?: number;
@@ -17,9 +18,7 @@ interface ProductListProps {
 
 async function ProductList({categoryId, limit, searchParams}:ProductListProps) {
 
-const products: ProductItem[] = await getServerProducts(categoryId);
-
-//  console.log("Fetched products:", products);
+  const products = await getServerProducts(categoryId, limit, searchParams);
   return (
  <div className="mt-12 flex gap-x-8 gap-y-16 justify-between flex-wrap">
       {products.map((product: ProductItem) => (

@@ -5,6 +5,8 @@ import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 import { myStoreInfo } from "../contants/general";
 import { Cardo } from 'next/font/google'
+import { WixClientContextProvider } from "../global/wixContext";
+
 
 const cardo = Cardo({
   subsets: ['latin'],

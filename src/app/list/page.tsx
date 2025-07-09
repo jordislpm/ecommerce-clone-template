@@ -22,7 +22,7 @@ async function ListPage({ searchParams }: { searchParams: any }) {
       <h1 className="mt-12 text-xl font-semibold">{cat?.collection?.name} For You!</h1>
       <ProductList
         categoryId={
-          cat.collection?._id || "00000000-000000-000000-000000000001"
+          searchParams.cat || "all-products"
         }
         searchParams={searchParams}
       />
