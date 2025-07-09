@@ -237,7 +237,7 @@ export const singleProduct: ProductItem = {
 
 export const kidsClothingCategories: CategoryItem[] = [
   {
-    _id: "1",
+    _id: "8c4f2bfb-57f6-2b87-b53b-b48b9613a67c",
     name: "T-Shirts",
     slug: "t-shirts",
     media: {
@@ -250,7 +250,7 @@ export const kidsClothingCategories: CategoryItem[] = [
   },
   {
     _id: "2",
-    name: "Shirts & Blouses",
+    name: "f4bded91-7788-2a72-f073-f82a1194148a",
     slug: "shirts-blouses",
     media: {
       mainMedia: {
@@ -392,4 +392,121 @@ export const kidsClothingCategories: CategoryItem[] = [
       },
     },
   },
+  {
+  _id: "14",
+  name: "Shoes",
+  slug: "shoes",
+  media: {
+    mainMedia: {
+      image: {
+        url: "https://images.pexels.com/photos/1598508/pexels-photo-1598508.jpeg",
+      },
+    },
+  },
+},
+{
+  _id: "1cda0b76-3e3e-32c3-9679-28e381d4d1e8",
+  name: "Accessories",
+  slug: "accessories",
+  media: {
+    mainMedia: {
+      image: {
+        url: "https://images.pexels.com/photos/325527/pexels-photo-325527.jpeg", 
+      },
+    },
+  },
+},
+{
+  _id: "16",
+  name: "Bags & Backpacks",
+  slug: "bags-backpacks",
+  media: {
+    mainMedia: {
+      image: {
+        url: "https://images.pexels.com/photos/8617629/pexels-photo-8617629.jpeg",
+      },
+    },
+  },
+},
+{
+  _id: "17",
+  name: "Hats & Caps",
+  slug: "hats-caps",
+  media: {
+    mainMedia: {
+      image: {
+        url: "https://images.pexels.com/photos/5698908/pexels-photo-5698908.jpeg",
+      },
+    },
+  },
+},
+{
+  _id: "18",
+  name: "Socks & Underwear",
+  slug: "socks-underwear",
+  media: {
+    mainMedia: {
+      image: {
+        url: "https://images.pexels.com/photos/3993401/pexels-photo-3993401.jpeg",
+      },
+    },
+  },
+},
 ];
+
+
+const ProductWix = {
+    name: 'Soy un producto',
+    slug: 'soy-un-producto-6',
+    visible: true,
+    productType: 'physical',
+    description: 'Soy la descripción de un producto. Soy el lugar ideal para agregar detalles sobre tu producto, así como tamaño, materiales, instrucciones de cuidado y de limpieza.',
+    sku: '364215376135199',
+    weight: 0,
+    weightRange: { minValue: 0, maxValue: 0 },
+    stock: {
+      trackInventory: false,
+      inStock: true,
+      inventoryStatus: 'IN_STOCK'
+    },
+    price: {
+      currency: 'CAD',
+      price: 85,
+      discountedPrice: 85,
+      formatted: [Object]
+    },
+    priceData: {
+      currency: 'CAD',
+      price: 85,
+      discountedPrice: 85,
+      formatted: [Object]
+    },
+    convertedPriceData: {
+      currency: 'CAD',
+      price: 85,
+      discountedPrice: 85,
+      formatted: [Object]
+    },
+    priceRange: { minValue: 85, maxValue: 85 },
+    costRange: { minValue: 0, maxValue: 0 },
+    additionalInfoSections: [ [Object], [Object], [Object] ],
+    ribbons: [],
+    media: { mainMedia: [Object], items: [Array] },
+    customTextFields: [],
+    manageVariants: false,
+    productOptions: [],
+    productPageUrl: {
+      base: 'https://jordislpm.wixstudio.com/e-commerce-app-clone',
+      path: '/product-page/soy-un-producto-6'
+    },
+    numericId: '1418288158573000',
+    inventoryItemId: '15880dcf-aa70-a849-322e-f45a9a1707d8',
+    discount: { type: 'NONE', value: 0 },
+    collectionIds: [ '00000000-000000-000000-000000000001' ],
+    variants: [ [Object] ],
+    lastUpdated: '2075-12-09T03:13:35.932Z',
+    ribbon: '',
+    exportProductId: 'product_ea77f230-558f-57b6-cdd1-0ba565e8f827',
+    _id: 'ea77f230-558f-57b6-cdd1-0ba565e8f827',
+    _createdDate: '2014-12-11T08:55:58.573Z'
+  }

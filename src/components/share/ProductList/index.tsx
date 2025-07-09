@@ -5,6 +5,7 @@ import DOMPurify from "isomorphic-dompurify";
 import { exampleProducts } from '../../../contants/temporaryData';
 import { ProductItem } from '../../../types';
 import ProductCard from '../ProductCard';
+import { getServerProducts } from '../../../hooks/server/products/getServerGetProducts';
 
 
 interface ProductListProps {
@@ -15,9 +16,13 @@ interface ProductListProps {
 
 
 async function ProductList({categoryId, limit, searchParams}:ProductListProps) {
+
+const products: ProductItem[] = await getServerProducts(categoryId);
+
+//  console.log("Fetched products:", products);
   return (
  <div className="mt-12 flex gap-x-8 gap-y-16 justify-between flex-wrap">
-      {exampleProducts.map((product: ProductItem) => (
+      {products.map((product: ProductItem) => (
             <ProductCard key={product._id} product={product}/>
       ))}
       {/* {searchParams?.cat || searchParams?.name ? (

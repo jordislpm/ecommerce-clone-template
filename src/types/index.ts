@@ -8,7 +8,7 @@ export type SlideType = {
 };
 
 export type ProductItem = {
-  _id: string;
+   _id?: string;
   slug: string;
   name: string;
   description?: string;

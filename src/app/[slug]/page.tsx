@@ -1,7 +1,7 @@
 import React from 'react'
 import { singleProduct } from '../../contants/temporaryData';
 import ProductImages from '../../components/share/ProductImages';
-import { capitalizeText } from '../../lib/format';
+import { capitalizeText } from '../../lib/format/formatText';
 import CustomizeProducts from '../../components/share/CustomizeProducts';
 import Add from '../../components/share/Add';
 
