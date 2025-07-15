@@ -6,6 +6,7 @@ import { exampleProducts } from '../../../contants/temporaryData';
 import { ProductItem } from '../../../types';
 import ProductCard from '../ProductCard';
 import { getServerProducts } from '../../../hooks/server/products/getServerGetProducts';
+import Pagination from '../Pagination';
 
 
 
@@ -16,21 +17,28 @@ interface ProductListProps {
 }
 
 
-async function ProductList({categoryId, limit, searchParams}:ProductListProps) {
+async function ProductList({ categoryId, limit, searchParams }: ProductListProps) {
 
-  const products = await getServerProducts(categoryId, limit, searchParams);
+  const {products, pagination} = await getServerProducts(categoryId, limit, searchParams);
   return (
- <div className="mt-12 flex gap-x-8 gap-y-16 justify-between flex-wrap">
+    <div className="mt-12 flex gap-x-8 gap-y-16 justify-between flex-wrap">
       {products.map((product: ProductItem) => (
-            <ProductCard key={product._id} product={product}/>
+        <ProductCard key={product._id} product={product} />
       ))}
-      {/* {searchParams?.cat || searchParams?.name ? (
+      {products.length <= 0 &&
+        <div className='flex justify-center items-center w-full'>
+          <p className="text-secundary text-center mt-4">
+            No products found in this collection.
+          </p>
+        </div>
+      }
+      {searchParams?.cat || searchParams?.name ? (
         <Pagination
-          currentPage={res.currentPage || 0}
-          hasPrev={res.hasPrev()}
-          hasNext={res.hasNext()}
+          currentPage={pagination.currentPage || 0}
+          hasPrev={pagination.hasPrev}
+          hasNext={pagination.hasNext}
         />
-      ) : null} */}
+      ) : null}
     </div>
   );
 };

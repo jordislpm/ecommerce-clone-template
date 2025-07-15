@@ -1,19 +1,28 @@
 import Link from 'next/link'
-import React from 'react'
-import { myStoreInfo } from '../../../../contants/general'
+import React, { useEffect } from 'react'
 import Menu from '../Menu'
 import Image from 'next/image'
 import SearchBar from '../../../share/SearchBar'
 import NavIcons from '../NavIcons'
 
-function NavBar() {
+import { collectionsStore } from '../../../../global/collections/collectionsStore'
+import useCollectionsStore from '../../../../hooks/client/global/useCollectionsStore'
+import { useGetCollections } from '../../../../hooks/client/collections/useGetCollections'
+import { getServerCollections } from '../../../../hooks/server/collections/getServerCollections'
+import OnlyForSearchCollections from '../../../share/OnlyForSearchCollections/OnlyForSearchCollections'
+
+async function NavBar() {
+
+     const collections = await getServerCollections();
+  
     return (
         <div className='h-20 px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 relative w-full'>
+            <OnlyForSearchCollections collections={collections}/>
             {/* Mobile */}
             <div className='flex h-full items-center justify-between md:hidden'>
                 <Link href="/">
                     <div className='text-2xl tracking-wide'>
-                        <Image className='w-180 lg:w-250 xl:w-450' src="/oliStore.png" alt='logo' width={180} height={50} />
+                        <Image className='w-180 lg:w-250 xl:w-450 h-auto' src="/oliStore.png" priority alt='logo' width={180} height={50} />
                     </div>
                 </Link>
                 <Menu />

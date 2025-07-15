@@ -13,7 +13,7 @@ function Footer() {
         <div className="w-full md:w-1/2 lg:w-1/4 flex flex-col gap-8">
           <Link href="/">
             <div className='text-2xl tracking-wide'>
-              <Image className='w-180 lg:w-250 xl:w-450' src="/oliStore.png" alt='logo' width={180} height={50} />
+              <Image className='w-180 lg:w-250 xl:w-450 h-auto' src="/oliStore.png" alt='logo' width={180} height={50} />
             </div>
           </Link>
           <p>

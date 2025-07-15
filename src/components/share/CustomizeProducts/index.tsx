@@ -2,6 +2,9 @@
 import React, { useEffect, useState } from 'react'
 import { ProductItem, ProductOptionProductItem, VariantProductItem } from '../../../types';
 import Add from '../Add';
+import { usePathname, useSearchParams, useRouter } from 'next/navigation';
+import useSelecVariantStore from '../../../hooks/client/global/useSelecVariantStore';
+
 
 
 interface CustomizeProductsProps {
@@ -12,10 +15,15 @@ interface CustomizeProductsProps {
 
 function CustomizeProducts({ productId, variants, productOptions }: CustomizeProductsProps) {
 
+    const { selectedVariant, setSelectedVariant } = useSelecVariantStore()
+    const searchParams = useSearchParams();
+    const router = useRouter();
+    // const { replace } = useRouter();
+
     const [selectedOptions, setSelectedOptions] = useState<{
         [key: string]: string;
     }>({});
-    const [selectedVariant, setSelectedVariant] = useState<VariantProductItem>();
+
 
     useEffect(() => {
         const variant = variants.find((v) => {
@@ -25,11 +33,60 @@ function CustomizeProducts({ productId, variants, productOptions }: CustomizePro
                 ([key, value]) => variantChoices[key] === value
             );
         });
-        setSelectedVariant(variant);
-    }, [selectedOptions, variants]);
+        if (variant) {
+            setSelectedVariant(variant);
+        }
+    }, [selectedOptions, variants, setSelectedVariant]);
+
+    // useEffect(() => {
+    //     if (selectedVariant) {
+    //        const params = new URLSearchParams(searchParams.toString());
+
+    // if (params.get("variant") === selectedVariant._id) {
+    //   // If already selected → remove it
+    //   params.delete("variant");
+    // } else {
+    //   // Otherwise → set/update it
+    //   params.set("variant", selectedVariant._id);
+    // }
+
+    // router.push(`?${params.toString()}`);
+    //     }
+    // }, [selectedVariant, router, searchParams])
+
+    // useEffect(() => {
+    //     if (!selectedVariant) return;
+
+    //     const params = new URLSearchParams(searchParams.toString());
+    //     const currentVariant = params.get("variant");
+
+    //     // ❌ Avoid update if nothing changed
+    //     if (currentVariant === selectedVariant._id) return;
+
+    //     if (params.get("variant") === selectedVariant._id) {
+    //         // If already selected → remove it
+    //         params.delete("variant");
+    //     } else {
+    //         // Otherwise → set/update it
+    //         params.set("variant", selectedVariant._id);
+    //     }
+
+    //     router.push(`?${params.toString()}`);
+
+    // }, [selectedVariant]);
 
     const handleOptionSelect = (optionType: string, choice: string) => {
-        setSelectedOptions((prev) => ({ ...prev, [optionType]: choice }));
+
+        //selectedOptions[optionType] === choice
+        setSelectedOptions((prev) => {
+            if (prev[optionType] === choice) {
+                const updated = { ...prev };
+                delete updated[optionType];
+                return updated;
+            }
+            return { ...prev, [optionType]: choice }
+        }
+        );
     };
 
     const isVariantInStock = (choices: { [key: string]: string }) => {
@@ -81,20 +138,20 @@ function CustomizeProducts({ productId, variants, productOptions }: CustomizePro
                                         <div className="absolute w-10 h-10 rounded-full ring-2 ring-main top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
                                     )}
                                     {disabled && (
-                                        <div className="absolute w-10 h-[2px] bg-secundary rotate-45 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+                                        <div className="absolute w-10 h-[2px] bg-secundary_second rotate-45 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
                                     )}
                                 </li>
                             ) : (
                                 <li
-                                    className="ring-1 ring-lama text-lama rounded-md py-1 px-4 text-sm"
+                                    className="ring-1 ring-lama text-main rounded-md py-1 px-4 text-sm"
                                     style={{
                                         cursor: disabled ? "not-allowed" : "pointer",
                                         backgroundColor: selected
-                                            ? "#f35c7a"
+                                            ? "#9BD4E4"
                                             : disabled
-                                                ? "#FBCFE8"
+                                                ? "#E4B29B"
                                                 : "white",
-                                        color: selected || disabled ? "white" : "#f35c7a",
+                                        color: selected || disabled ? "white" : "#9BD4E4",
                                         boxShadow: disabled ? "none" : "",
 
                                     }}
@@ -109,14 +166,14 @@ function CustomizeProducts({ productId, variants, productOptions }: CustomizePro
                 </div>
             ))}
             <Add
-        productId={productId}
-        variantId={
-          selectedVariant?._id || "00000000-0000-0000-0000-000000000000"
-        }
-        stockNumber={selectedVariant?.stock?.quantity || 0}
-      />
+                productId={productId}
+                variantId={
+                    selectedVariant?._id || "00000000-0000-0000-0000-000000000000"
+                }
+                stockNumber={selectedVariant?.stock?.quantity || 0}
+            />
             {/* COLOR */}
-            {/* 
+            {/*             
           <ul className="flex items-center gap-3">
             <li className="w-8 h-8 rounded-full ring-1 ring-gray-300 cursor-pointer relative bg-red-500">
               <div className="absolute w-10 h-10 rounded-full ring-2 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
@@ -129,19 +186,18 @@ function CustomizeProducts({ productId, variants, productOptions }: CustomizePro
             {/* OTHERS */}
             {/* <h4 className="font-medium">Choose a size</h4>
       <ul className="flex items-center gap-3">
-        <li className="ring-1 ring-lama text-lama rounded-md py-1 px-4 text-sm cursor-pointer">
+        <li className="ring-1 ring-main text-main rounded-md py-1 px-4 text-sm cursor-pointer">
           Small
         </li>
-        <li className="ring-1 ring-lama text-white bg-lama rounded-md py-1 px-4 text-sm cursor-pointer">
+        <li className="ring-1 ring-lama text-white bg-main rounded-md py-1 px-4 text-sm cursor-pointer">
           Medium
         </li>
-        <li className="ring-1 ring-pink-200 text-white bg-pink-200 rounded-md py-1 px-4 text-sm cursor-not-allowed">
+        <li className="ring-1 ring-secundary text-white bg-secundary rounded-md py-1 px-4 text-sm cursor-not-allowed">
           Large
         </li>
       </ul> */}
         </div>
     );
 };
-
 
 export default CustomizeProducts

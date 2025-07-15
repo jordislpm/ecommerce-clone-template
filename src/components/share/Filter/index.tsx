@@ -1,26 +1,29 @@
 "use client";
-import { usePathname, useSearchParams } from 'next/navigation';
-import { useRouter } from 'next/router';
+import { usePathname, useSearchParams, useRouter } from 'next/navigation';
 import React from 'react'
+import useCollectionsStore from '../../../hooks/client/global/useCollectionsStore';
 
 function Filter() {
-//   const pathname = usePathname();
-//   const searchParams = useSearchParams();
-//   const { replace } = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const { replace } = useRouter();
+
+
+  const { collections } = useCollectionsStore();
 
   const handleFilterChange = (
     e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
   ) => {
-    // const { name, value } = e.target;
-    // const params = new URLSearchParams(searchParams);
-    // params.set(name, value);
-    // replace(`${pathname}?${params.toString()}`);
+    const { name, value } = e.target;
+    const params = new URLSearchParams(searchParams);
+    params.set(name, value);
+    replace(`${pathname}?${params.toString()}`);
   };
 
   return (
     <div className="mt-12 flex justify-between flex-col md:flex-row gap-6 md:gap-0">
       <div className="flex gap-6 flex-wrap">
-        <select
+        {/* <select
           name="type"
           id=""
           className="py-2 px-4 rounded-2xl text-xs font-medium  bg-main"
@@ -29,6 +32,18 @@ function Filter() {
           <option>Type</option>
           <option value="physical">Physical</option>
           <option value="digital">Digital</option>
+        </select> */}
+        <select
+          name="cat"
+          className="py-2 px-4 rounded-2xl text-xs font-medium  bg-main"
+          onChange={handleFilterChange}
+        >
+          {/* <option>Collection</option> */}
+          {collections?.map((collection) => (
+            <option key={collection._id} value={collection.slug}>{collection.name}</option>
+          ))}
+          {/* <option value="">New Arrival</option>
+          <option value="">Popular</option> */}
         </select>
         <input
           type="text"
@@ -44,7 +59,7 @@ function Filter() {
           className="text-xs rounded-2xl pl-2 w-24 ring-1 ring-main"
           onChange={handleFilterChange}
         />
-        <select
+        {/* <select
           name="type"
           id=""
           className="py-2 px-4 rounded-2xl text-xs font-medium  bg-main"
@@ -67,17 +82,8 @@ function Filter() {
         >
           <option>Color</option>
           <option value="">Test</option>
-        </select>
+        </select> */}
         {/* TODO: Filter Categories */}
-        <select
-          name="cat"
-          className="py-2 px-4 rounded-2xl text-xs font-medium  bg-main"
-          onChange={handleFilterChange}
-        >
-          <option>Category</option>
-          <option value="">New Arrival</option>
-          <option value="">Popular</option>
-        </select>
         <select
           name=""
           id=""

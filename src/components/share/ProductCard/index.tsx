@@ -13,7 +13,7 @@ interface ProductCardProps {
 function ProductCard({ product }: ProductCardProps) {
     return (
         <Link
-            href={"/" + product.slug}
+            href={"/" + product._id}
             className="w-full flex flex-col gap-4 sm:w-[45%] lg:w-[22%]"
             key={product._id}
         >
@@ -37,7 +37,7 @@ function ProductCard({ product }: ProductCardProps) {
             </div>
             <div className="flex justify-between">
                 <span className="font-medium">{product.name}</span>
-                <span className="font-semibold">${product.price?.price}</span>
+                <span className="font-semibold ">${product.price?.price}</span>
             </div>
             {product.additionalInfoSections && (
                 <div

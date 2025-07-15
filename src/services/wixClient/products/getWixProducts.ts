@@ -1,6 +1,4 @@
-
 import { wixClientServerApi } from "../../../lib/wixClients/WixClientServer";
-
 
 interface GetWixProducts {
   categoryId?: string;
@@ -8,7 +6,11 @@ interface GetWixProducts {
   searchParams?: any;
 }
 
-export async function getWixProducts({ categoryId, limit, searchParams }: GetWixProducts = {}) {
+export async function getWixProducts({
+  categoryId,
+  limit,
+  searchParams,
+}: GetWixProducts = {}) {
   const PRODUCT_PER_PAGE = 20;
   const wixClient = await wixClientServerApi();
 
@@ -45,9 +47,11 @@ export async function getWixProducts({ categoryId, limit, searchParams }: GetWix
   productQuery = productQuery.limit(limit || PRODUCT_PER_PAGE);
 
   if (searchParams?.page) {
-    productQuery = productQuery.skip(parseInt(searchParams.page) * (limit || PRODUCT_PER_PAGE));
+    productQuery = productQuery.skip(
+      parseInt(searchParams.page) * (limit || PRODUCT_PER_PAGE)
+    );
   }
 
   const res = await productQuery.find();
-  return res.items;
+  return res;
 }

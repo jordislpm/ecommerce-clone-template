@@ -10,7 +10,6 @@ interface CategoryCardProps {
 
 function CollectionCard({ item }: CategoryCardProps) {
 
-    console.log(item._id)
     return (
         <Link
             href={`/list?cat=${item.slug}`}

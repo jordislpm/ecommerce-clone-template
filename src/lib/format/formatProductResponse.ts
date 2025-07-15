@@ -7,12 +7,12 @@ export function formatProductResponse(raw: any): ProductItem {
     name: raw.name ?? "",
     description: raw.description ?? "",
     price: raw.price
-      ? { price: raw.price.price ?? 0,
-          discountedPrice: raw.price.discountedPrice ?? raw.price.price ?? 0 }
+      ? {
+          price: raw.price.price ?? 0,
+          discountedPrice: raw.price.discountedPrice ?? raw.price.price ?? 0,
+        }
       : undefined,
-    stock: raw.stock
-      ? { quantity: raw.stock.quantity ?? 0 }
-      : undefined,
+    stock: raw.stock ? { quantity: raw.stock.quantity ?? 0 } : undefined,
     media: {
       mainMedia: raw.media?.mainMedia
         ? { image: { url: raw.media.mainMedia.image?.url ?? "" } }
@@ -37,11 +37,25 @@ export function formatProductResponse(raw: any): ProductItem {
           price: v.price
             ? {
                 price: v.price.price ?? 0,
-                discountedPrice:
-                  v.price.discountedPrice ?? v.price.price ?? 0,
+                discountedPrice: v.price.discountedPrice ?? v.price.price ?? 0,
               }
             : undefined,
-          stock: v.stock ? { quantity: v.stock.quantity ?? 0 } : undefined,
+          stock: v.stock
+            ? {
+                quantity: v.stock.quantity ?? 0,
+                trackQuantity: v.stock.trackQuantity ?? false,
+                inStock: v.stock.inStock ?? false,
+              }
+            : undefined,
+          variant: v.variant
+            ? {
+                priceData: v.variant.priceData ?? null,
+                convertedPriceData: v.variant.convertedPriceData ?? null,
+                weight: v.variant.weight ?? null,
+                sku: v.variant.sku ?? null,
+                visible: v.variant.visible ?? null,
+              }
+            : undefined,
           choices: v.choices ?? null,
         }))
       : [],

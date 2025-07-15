@@ -5,7 +5,7 @@ import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 import { myStoreInfo } from "../contants/general";
 import { Cardo } from 'next/font/google'
-import { WixClientContextProvider } from "../global/wixContext";
+import { WixClientContextProvider } from "../global/wix/wixContext";
 
 
 const cardo = Cardo({

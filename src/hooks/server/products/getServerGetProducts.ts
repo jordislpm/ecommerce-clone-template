@@ -1,4 +1,5 @@
 
+import { formatPagination } from "../../../lib/format/formatPagination";
 import { formatProductResponse } from "../../../lib/format/formatProductResponse";
 import { getWixProducts } from "../../../services/wixClient/products/getWixProducts";
 
@@ -7,6 +8,13 @@ export async function getServerProducts(
   limit?: number,
   searchParams?: any
 ) {
-  const items = await getWixProducts({ categoryId, limit, searchParams });
-  return items.map(formatProductResponse);
+const res = await getWixProducts({ categoryId, limit, searchParams });
+
+
+
+const pagination = formatPagination({hasNext: res.hasNext(), hasPrev: res.hasPrev(),currentPage: res.currentPage })
+
+const products = res.items.map(formatProductResponse);
+  return {products, pagination}
+
 }

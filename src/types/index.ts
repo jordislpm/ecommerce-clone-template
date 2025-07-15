@@ -1,3 +1,5 @@
+import { collections } from "@wix/stores";
+import { MODE } from "../enums/auth-mode.enum";
 export type SlideType = {
   id: number;
   title: string;
@@ -8,7 +10,7 @@ export type SlideType = {
 };
 
 export type ProductItem = {
-   _id?: string;
+  _id?: string;
   slug?: string;
   name: string;
   description?: string;
@@ -41,28 +43,42 @@ export type ProductItem = {
 
 export type VariantProductItem = {
   _id: string;
-  option: string;
-  value: string;
+  option?: string; // Sometimes not provided by Wix
+  value?: string; // Sometimes not provided by Wix
   price?: {
     price: number;
     discountedPrice?: number;
   };
   stock?: {
     quantity: number;
-    inStock?: true
+    trackQuantity?: boolean;
+    inStock: boolean;
   };
-  //change this later
-  choices: any
+  variant?: {
+    priceData?: {
+      price: number;
+      discountedPrice: number;
+      currency?: string;
+    };
+    convertedPriceData?: {
+      price: number;
+      discountedPrice: number;
+      currency?: string;
+    };
+    weight?: number;
+    sku?: string;
+    visible?: boolean;
+  };
+  choices: Record<string, string>; // example: { "Color": "Red", "Size": "Large" }
 };
 
-export type  ProductOptionProductItem = {
-    name: string;
-    choices: Array<{
-      description: string;
-      value: string;
-
-    }>;
-  };
+export type ProductOptionProductItem = {
+  name: string;
+  choices: Array<{
+    description: string;
+    value: string;
+  }>;
+};
 
 export type CollectionItem = {
   _id: string;
@@ -79,9 +95,6 @@ export type CollectionItem = {
   };
 };
 
-
-
-
 export type MyStoreInfoType = {
   title: string;
   description: string;
@@ -96,3 +109,65 @@ export type MyStoreInfoType = {
     x: null | string;
   };
 };
+
+export type PaginationType = {
+  currentPage: number;
+  hasPrev: boolean;
+  hasNext: boolean;
+};
+
+/// AUTH
+
+// Shared base
+export type BaseAuthDTO = {
+  email: string;
+  password?: string;
+}
+
+// LOGIN
+export interface LoginDTO extends BaseAuthDTO {
+  mode: MODE.LOGIN;
+}
+
+// REGISTER
+export interface RegisterDTO extends BaseAuthDTO {
+  mode: MODE.REGISTER;
+  username: string;
+}
+
+// RESET PASSWORD
+export interface ResetPasswordDTO {
+  mode: MODE.RESET_PASSWORD;
+  email: string;
+}
+
+// EMAIL VERIFICATION
+export interface EmailVerificationDTO {
+  mode: MODE.EMAIL_VERIFICATION;
+  emailCode: string;
+}
+
+export type AuthDTO =
+  | LoginDTO
+  | RegisterDTO
+  | ResetPasswordDTO
+  | EmailVerificationDTO;
+
+/// GLOBAL CONTEXT
+
+export type SelectVariantGlobalType = {
+  selectedVariant: undefined | VariantProductItem;
+  setSelectedVariant: (newVariant: VariantProductItem) => void;
+};
+
+export type CollectionStoreType = {
+  collections: CollectionItem[] | null;
+  setCollections: (newCollections: CollectionItem[]) => void;
+};
+
+export interface AuthState {
+  isLoggedIn: boolean;
+  loading: boolean;
+  setIsLoggedIn: (value: boolean) => void;
+  setLoading: (value: boolean) => void;
+}

@@ -5,15 +5,20 @@ import React, { useEffect, useRef, useState } from 'react'
 import { kidsClothingCategories } from '../../../contants/temporaryData';
 import CollectionCard from '../CollectionCard';
 import { CollectionItem } from '../../../types';
+import { getServerCollections } from '../../../hooks/server/collections/getServerCollections';
+import useCollectionsStore from '../../../hooks/client/global/useCollectionsStore';
 
 interface CollectionListProps {
 collections: CollectionItem[];
 }
 
 
-function CollectionList({collections}:CollectionListProps) {
+function CollectionList() {
 
     const [current, setCurrent] = useState(0);
+
+    const {collections} = useCollectionsStore();
+
 
 
     const scrollRef = useRef<HTMLDivElement>(null)
@@ -62,7 +67,7 @@ function CollectionList({collections}:CollectionListProps) {
                 ref={scrollRef}
                 style={{ transform: `translateX(-${current * 100}px)` }}>
                 <div className="flex gap-4 md:gap-8">
-                    {collections.map((item) => (
+                    {collections?.map((item) => (
                         <CollectionCard
                             key={item._id}
                             item={item}
