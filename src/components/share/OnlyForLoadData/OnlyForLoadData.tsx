@@ -5,19 +5,19 @@ import useCollectionsStore from '../../../hooks/client/global/useCollectionsStor
 import { useWixClient } from '../../../hooks/client/wix/useWixClient';
 import useAuthStore from '../../../hooks/client/global/useAuthStore';
 import { useIsLoggedIn } from '../../../hooks/client/auth/useIsLoggedIn';
+import useCartStore from '../../../hooks/client/cart/useCartStore';
 
 interface OnlyForSearchCollectionsProps {
 collections: CollectionItem[];
 }
 
-function OnlyForSearchCollections({collections}:OnlyForSearchCollectionsProps) {
+function OnlyForLoadData({collections}:OnlyForSearchCollectionsProps) {
 const {setCollections} = useCollectionsStore()
 
 const {isLoggedIn}= useIsLoggedIn()
 
-  const wixClient = useWixClient();
-
   const {setIsLoggedIn, setLoading}= useAuthStore()
+  const { getCart} = useCartStore();
 
 
 useEffect(()=>{
@@ -25,14 +25,19 @@ useEffect(()=>{
 },[setCollections, collections])
 
 
-  useEffect(() => {
+useEffect(() => {
+  if (typeof isLoggedIn === 'boolean') {
     setIsLoggedIn(isLoggedIn);
     setLoading(false);
-  }, [isLoggedIn, setIsLoggedIn, setLoading]);
+    if (isLoggedIn) {
+      getCart();
+    }
+  }
+}, [isLoggedIn, setIsLoggedIn, setLoading, getCart]);
 
   return (
     <></>
   )
 }
 
-export default OnlyForSearchCollections
+export default OnlyForLoadData

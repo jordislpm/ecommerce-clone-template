@@ -3,8 +3,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { IoMenu } from "react-icons/io5";
+import useCartStore from '../../../../hooks/client/cart/useCartStore';
 
 function Menu() {
+
+     const {  counter} = useCartStore();
 
     const [open, setOpen] = useState<boolean>(false)
     return (
@@ -21,7 +24,7 @@ function Menu() {
                     <Link href="/">About</Link>
                     <Link href="/">Contact</Link>
                     <Link href="/">Logout</Link>
-                    <Link href="/">Cart (1)</Link>
+                    <Link href="/">Cart ({counter})</Link>
                 </div>
             )}
         </div>

@@ -16,12 +16,7 @@ async function ListPage({ searchParams }: { searchParams: any }) {
 
   const cat = { collection: kidsClothingCategories[0] }
 
-  console.log("products", products);
-
   const collection = await getServerColletionBySlug(searchParams.cat)
-
-  console.log(collection);
-
   return (
     <div className="px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 relative">
       {/* CAMPAIGN */}

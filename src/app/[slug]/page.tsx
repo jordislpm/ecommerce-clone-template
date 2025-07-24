@@ -7,6 +7,7 @@ import Add from '../../components/share/Add';
 import { getServerProduct } from '../../hooks/server/products/getServerGetProduct';
 import DOMPurify from "isomorphic-dompurify";
 import SinglePrice from '../../components/share/SinglePrice';
+import useSelecVariantStore from '../../hooks/client/global/useSelecVariantStore';
 
 
 async function SinglePage({ params }: { params: { slug: string } }) {
@@ -57,7 +58,6 @@ async function SinglePage({ params }: { params: { slug: string } }) {
           <>
             <Add
               productId={product._id!}
-              variantId="00000000-0000-0000-0000-000000000000"
               stockNumber={product.stock?.quantity || 0}
             />
           </>

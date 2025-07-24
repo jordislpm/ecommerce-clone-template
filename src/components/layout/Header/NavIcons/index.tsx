@@ -8,6 +8,7 @@ import CartModal from '../../../share/CartModal';
 import { useIsLoggedIn } from '../../../../hooks/client/auth/useIsLoggedIn';
 import { useLogout } from '../../../../hooks/client/auth/useLogout';
 import useAuthStore from '../../../../hooks/client/global/useAuthStore';
+import useCartStore from '../../../../hooks/client/cart/useCartStore';
 
 function NavIcons() {
     const [isProfileOpen, setIsProfileOpen] = useState<boolean>(false);
@@ -17,6 +18,7 @@ function NavIcons() {
     const { logout } = useLogout();
     const { isLoggedIn, loading, setIsLoggedIn, setLoading } = useAuthStore();
     const router = useRouter();
+    const {  counter} = useCartStore();
 
     const handleProfle = () => {
         if (loading) return; 
@@ -62,7 +64,7 @@ function NavIcons() {
             />
             {isProfileOpen && (
                 <div className="absolute p-4 top-12 rounded-md left-0 shadow-modal z-20 bg-white">
-                    <Link className="hover-underline-main" href="/">Profile</Link>
+                    <Link className="hover-underline-main" href="/profile">Profile</Link>
                     <div
                         className="mt-2 cursor-pointer hover-underline-main"
                         onClick={handleLogout}
@@ -85,10 +87,13 @@ function NavIcons() {
                     height={22}
                     width={22}
                     onClick={handleCart}  // Toggle cart modal
-                />
-                <div className="absolute -top-4 -right-4 w-6 h-6 bg-secundary rounded-full text-white text-sm flex items-center justify-center">
-                    2
+                />{
+                    counter > 0 && 
+                      <div className="absolute -top-4 -right-4 w-6 h-6 bg-secundary rounded-full text-white text-sm flex items-center justify-center">
+                    {counter}
                 </div>
+                }
+              
             </div>
             {isCartOpen && <CartModal />}
         </div>

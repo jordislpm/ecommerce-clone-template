@@ -116,6 +116,58 @@ export type PaginationType = {
   hasNext: boolean;
 };
 
+export type MoneyValue = {
+  amount: string;
+  convertedAmount: string;
+  formattedAmount: string;
+  formattedConvertedAmount: string;
+};
+
+export type CartItem = {
+  id: string;
+  quantity: number;
+  name?: string;
+  price?: string; // 💡 Safer for rendering (formattedAmount as string)
+  image: string;
+  availability: {
+    status: string;
+    quantityAvailable: number
+  }
+  catalogReference?: {
+    appId: string;
+    catalogItemId: string;
+    options?: {
+      variantId?: string;
+    };
+  };
+};
+
+export type Cart = {
+  _id: string;
+  _createdDate: string;
+  _updatedDate: string;
+  buyerInfo: {
+    contactId: string;
+    memberId: string;
+  };
+  buyerLanguage: string;
+  siteLanguage: string;
+  currency: string;
+  paymentCurrency: string;
+  conversionCurrency: string;
+  taxIncludedInPrices: boolean;
+  weightUnit: string;
+  purchaseFlowId: string;
+  managedByV2: boolean;
+
+  appliedDiscounts: any[];
+  discount: MoneyValue;
+  subtotal: MoneyValue;
+  subtotalAfterDiscounts: MoneyValue;
+
+  lineItems: CartItem[];
+};
+
 /// AUTH
 
 // Shared base
@@ -171,3 +223,12 @@ export interface AuthState {
   setIsLoggedIn: (value: boolean) => void;
   setLoading: (value: boolean) => void;
 }
+
+export type CartState = {
+  cart: Cart | null;
+  isLoading: boolean;
+  counter: number;
+  getCart: () => void;
+  addItem: (productId: string, variantId: string, quantity: number) => void;
+  removeItem: (itemId: string) => void;
+};

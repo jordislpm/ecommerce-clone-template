@@ -1,15 +1,34 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import useCartStore from '../../../hooks/client/cart/useCartStore';
+import useSelecVariantStore from '../../../hooks/client/global/useSelecVariantStore';
+
 
 
 interface AddProps {
     productId: string;
-    variantId: string;
     stockNumber: number;
 }
 
-function Add({ productId, variantId, stockNumber }: AddProps) {
+function Add({ productId, stockNumber }: AddProps) {
+
+    const { selectedVariant, setSelectedVariant } = useSelecVariantStore()
     const [quantity, setQuantity] = useState(1);
+    const [variantId, setVariantId] = useState<string>("00000000-0000-0000-0000-000000000000");
+
+
+    useEffect(() => {
+
+        if (selectedVariant) {
+            setVariantId(selectedVariant?._id)
+        }
+
+
+    }, [selectedVariant])
+
+
+
+    const { addItem, isLoading } = useCartStore()
 
     const handleQuantity = (type: "i" | "d") => {
         if (type === "d" && quantity > 1) {
@@ -55,10 +74,10 @@ function Add({ productId, variantId, stockNumber }: AddProps) {
                     )}
                 </div>
                 <button
-                    //   onClick={() => addItem(wixClient, productId, variantId, quantity)}
-                    //   disabled={
-                    //     isLoading}
-                    className="w-36 text-sm rounded-3xl ring-1 ring-secundary  bg-secundary text-white py-2 px-4 hover:bg-white hover:text-secundary disabled:cursor-not-allowed disabled:bg-pink-200 disabled:ring-0 disabled:text-white disabled:ring-none"
+                    onClick={() => addItem(productId, variantId, quantity)}
+                    disabled={
+                       false}
+                    className="w-36 text-sm rounded-3xl ring-1 ring-secundary  bg-secundary text-white py-2 px-4 hover:bg-white hover:text-secundary disabled:cursor-not-allowed disabled:bg-secundary disabled:opacity-50 disabled:ring-0 disabled:text-white disabled:ring-none"
                 >
                     Add to Cart
                 </button>

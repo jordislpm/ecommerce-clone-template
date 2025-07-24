@@ -5,12 +5,14 @@ import { LoginState } from "@wix/sdk";
 import { MODE } from "../../../enums/auth-mode.enum";
 import { useWixClient } from "../wix/useWixClient";
 import { authStore } from "../../../global/auth/authStore";
+import { cartStore } from "../../../services/wixClient/cart/cartStore";
 
 export function useAuth() {
   const wixClient = useWixClient();
   const router = useRouter();
 
   const setIsLoggedIn = authStore((state) => state.setIsLoggedIn);
+  const getCart = cartStore((state) => state.getCart);
 
   const [mode, setMode] = useState<MODE>(MODE.LOGIN);
   const [username, setUsername] = useState("");
@@ -80,6 +82,7 @@ export function useAuth() {
           });
           wixClient.auth.setTokens(tokens);
           setIsLoggedIn(true);
+          getCart()
           router.push("/");
           break;
 

@@ -9,7 +9,7 @@ import { collectionsStore } from '../../../../global/collections/collectionsStor
 import useCollectionsStore from '../../../../hooks/client/global/useCollectionsStore'
 import { useGetCollections } from '../../../../hooks/client/collections/useGetCollections'
 import { getServerCollections } from '../../../../hooks/server/collections/getServerCollections'
-import OnlyForSearchCollections from '../../../share/OnlyForSearchCollections/OnlyForSearchCollections'
+import OnlyForLoadData from '../../../share/OnlyForLoadData/OnlyForLoadData'
 
 async function NavBar() {
 
@@ -17,7 +17,7 @@ async function NavBar() {
   
     return (
         <div className='h-20 px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 relative w-full'>
-            <OnlyForSearchCollections collections={collections}/>
+            <OnlyForLoadData collections={collections}/>
             {/* Mobile */}
             <div className='flex h-full items-center justify-between md:hidden'>
                 <Link href="/">

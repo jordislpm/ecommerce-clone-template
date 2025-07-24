@@ -64,11 +64,11 @@ function Footer() {
           <div className="flex flex-col justify-between">
             <h1 className="font-medium text-lg">SHOP</h1>
             <div className="flex flex-col gap-6">
-              <Link className='hover-underline-secundary' href="">New Arrivals</Link>
-              <Link className='hover-underline-secundary' href="">Accessories</Link>
-              <Link className='hover-underline-secundary' href="">Men</Link>
-              <Link className='hover-underline-secundary' href="">Women</Link>
-              <Link className='hover-underline-secundary' href="">All Products</Link>
+              <Link className='hover-underline-secundary' href="/list?cat=all-products&sort=asc+lastUpdated">New Arrivals</Link>
+              <Link className='hover-underline-secundary' href="/list?cat=accessories">Accessories</Link>
+              <Link className='hover-underline-secundary' href="/list?cat=pants-jeans">Pants</Link>
+              <Link className='hover-underline-secundary' href="/list?cat=t-shirts">T-shirts</Link>
+              <Link className='hover-underline-secundary' href="/list?cat=all-products">All Products</Link>
             </div>
           </div>
           <div className="flex flex-col justify-between">

@@ -1,14 +1,22 @@
 'use client'
 import Image from 'next/image'
 import React from 'react'
+import { CartItem } from '../../../types'
+import useCartStore from '../../../hooks/client/cart/useCartStore';
 
 
+interface CartModalItemProps {
+item: CartItem;
+}
 
-function CartModalItem() {
-    return (
+function CartModalItem({item}:CartModalItemProps) {
+
+ const {removeItem } = useCartStore();
+
+   return (
         <div className='flex gap-4'>
             <Image
-                src="/temporary/boyTshirt.jpg"
+                src={item.image}
                 alt=""
                 width={72}
                 height={96}
@@ -19,20 +27,19 @@ function CartModalItem() {
                 <div className=''>
                     {/* TITTLE*/}
                     <div className='flex items-center justify-between gap-8'>
-                        <h3 className='font-semibold'>Product Name</h3>
-                        <div className='p-1 bg-secundary_second rounded-sm'>$49</div>
+                        <h3 className='font-semibold'>{item.name}</h3>
+                        <div className='p-1 bg-secundary_second rounded-sm'>${item.price}</div>
                     </div>
                     {/* DESC */}
                     <div className='text-sm text-gray-500'>
-                        available
+                         {item.availability?.status.toLocaleLowerCase()}
                     </div>
                 </div>
                 {/* BOTTOM */}
                 <div className='flex justify-between text-sm'>
-                    <span className='text-gray-500'>Qty. 2</span>
-                    <span className='text-main_second cursor-pointer'>Remove</span>
+                    <span className='text-gray-500'>Qty. {item.quantity}</span>
+                    <span onClick={()=>removeItem(item.id)} className='text-main_second cursor-pointer'>Remove</span>
                 </div>
-
             </div>
         </div>
     )
