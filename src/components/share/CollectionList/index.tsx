@@ -44,19 +44,29 @@ function CollectionList() {
         const isAtStart = scrollLeft <= 0;
         const isAtEnd = scrollLeft + clientWidth >= scrollWidth - 1;
 
+//         if(isAtEnd){
+//    setAtEnd(isAtEnd);
+//         }
+
         setAtStart(isAtStart);
         setAtEnd(isAtEnd);
     };
 
-    useEffect(() => {
-        const el = scrollRef.current;
-        if (!el) return;
+useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
 
-        el.addEventListener("scroll", checkPosition);
-        checkPosition();
+    el.addEventListener("scroll", checkPosition);
 
-        return () => el.removeEventListener("scroll", checkPosition);
-    }, []);
+    const timeout = setTimeout(() => {
+        checkPosition(); 
+    }, 100);
+
+    return () => {
+        el.removeEventListener("scroll", checkPosition);
+        clearTimeout(timeout);
+    };
+}, []);
 
     return (
         <div className="relative px-4">

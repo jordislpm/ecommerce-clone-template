@@ -5,7 +5,6 @@ import { wixClientServerApi } from "../../lib/wixClients/WixClientServer";
 
 const OrderPage = async ({ params }: { params: { id: string } }) => {
   const id = params.id;
-
   const wixClient = await wixClientServerApi();
 
   let order;
