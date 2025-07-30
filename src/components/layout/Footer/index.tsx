@@ -2,6 +2,7 @@ import React from 'react'
 import Image from "next/image";
 import Link from "next/link";
 import { myStoreInfo } from '../../../contants/general';
+import { socialIcons } from '../../../contants/socialMedia';
 
 
 function Footer() {
@@ -22,7 +23,17 @@ function Footer() {
           <span className="font-semibold">{myStoreInfo.email}</span>
           <span className="font-semibold">{myStoreInfo.phone}</span>
           <div className="flex gap-6">
-            {myStoreInfo.socialMedia.facebook &&
+
+
+            {socialIcons.map(({ name, icon }) => {
+                                        const url = myStoreInfo.socialMedia[name];
+                                        return url ? (
+                                            <a key={name} href={url} target="_blank" rel="noopener noreferrer">
+                                                <Image src={icon} alt={`${name} icon`} width={16} height={16} />
+                                            </a>
+                                        ) : null;
+                                    })}
+            {/* {myStoreInfo.socialMedia.facebook &&
               <a href={myStoreInfo.socialMedia.facebook} target='_blank'>
                 <Image src="/facebook.png" alt="" width={16} height={16} />
               </a>
@@ -46,7 +57,7 @@ function Footer() {
               <a href={myStoreInfo.socialMedia.x} target='_blank'>
                 <Image src="/x.png" alt="" width={16} height={16} />
               </a>
-            }
+            } */}
           </div>
         </div>
         {/* CENTER */}
@@ -54,11 +65,11 @@ function Footer() {
           <div className="flex flex-col justify-between">
             <h1 className="font-medium text-lg">COMPANY</h1>
             <div className="flex flex-col gap-6">
-              <Link className='hover-underline-secundary' href="">About Us</Link>
-              <Link className='hover-underline-secundary' href="">Careers</Link>
-              <Link className='hover-underline-secundary' href="">Affiliates</Link>
-              <Link className='hover-underline-secundary' href="">Blog</Link>
-              <Link className='hover-underline-secundary' href="">Contact Us</Link>
+              <Link className='hover-underline-secundary' href="/about">About Us</Link>
+              <Link className='hover-underline-secundary' href="/careers">Careers</Link>
+              <Link className='hover-underline-secundary' href="/affiliates">Affiliates</Link>
+              <Link className='hover-underline-secundary' href="/blog">Blog</Link>
+              <Link className='hover-underline-secundary' href="/contact">Contact Us</Link>
             </div>
           </div>
           <div className="flex flex-col justify-between">
@@ -74,11 +85,11 @@ function Footer() {
           <div className="flex flex-col justify-between">
             <h1 className="font-medium text-lg">HELP</h1>
             <div className="flex flex-col gap-6">
-              <Link className='hover-underline-secundary' href="">Customer Service</Link>
-              <Link className='hover-underline-secundary' href="">My Account</Link>
-              <Link className='hover-underline-secundary' href="">Find a Store</Link>
-              <Link className='hover-underline-secundary' href="">Legal & Privacy</Link>
-              <Link className='hover-underline-secundary' href="">Gift Card</Link>
+              <Link className='hover-underline-secundary' href="/customer-service">Customer Service</Link>
+              <Link className='hover-underline-secundary' href="/profile">My Account</Link>
+              <Link className='hover-underline-secundary' href="/find-store">Find a Store</Link>
+              <Link className='hover-underline-secundary' href="/legal">Legal & Privacy</Link>
+              <Link className='hover-underline-secundary' href="/gift-card">Gift Card</Link>
             </div>
           </div>
         </div>

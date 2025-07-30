@@ -34,7 +34,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={cardo.className}>
         <Header />
-        <main className="flex-1 pt-[80px] pb-20">
+        <main className="flex-1 pt-[5px] pb-2">
           {children}
         </main>
         <Footer />

@@ -5,6 +5,7 @@ import { wixClientServerApi } from "../../lib/wixClients/WixClientServer";
 import { updateUser } from "../../lib/actions/user/updateUser";
 import UpdateButton from "../../components/share/UpdateButton";
 import { getServerUser } from "../../hooks/server/user/getServerUser";
+import ProfileNotLogged from "../../components/share/ProfileNotLogged";
 
 const ProfilePage = async () => {
 
@@ -13,7 +14,7 @@ const ProfilePage = async () => {
 
 
     if (!user?.member?.contactId) {
-        return <div className="">Not logged in!</div>;
+        return <div className=""><ProfileNotLogged/></div>;
     }
 
     // const orderRes = await wixClient.orders.searchOrders({

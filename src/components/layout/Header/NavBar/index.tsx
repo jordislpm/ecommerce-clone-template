@@ -44,7 +44,7 @@ async function NavBar() {
                         </Link>
                         <Link
                             className='hover-underline-main text-md text-secundary hover-scale-link'
-                            href="/"
+                            href="/list"
                         >Shop
                         </Link>
                         <Link
@@ -53,12 +53,12 @@ async function NavBar() {
                         >Deals
                         </Link>
                         <Link
-                            href="/"
+                            href="/about"
                             className='hover-underline-main text-md text-secundary hover-scale-link'
                         >About
                         </Link>
                         <Link
-                            href="/"
+                            href="/contact"
                             className='hover-underline-main text-md text-secundary hover-scale-link'
                         >Contact
                         </Link>

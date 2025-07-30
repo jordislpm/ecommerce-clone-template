@@ -98,17 +98,67 @@ export type CollectionItem = {
 export type MyStoreInfoType = {
   title: string;
   description: string;
+
+  about: {
+    mission: string;
+    whyChooseUs: string[];
+  };
+
+  contact: {
+    heading: string;
+    description: string;
+  };
+
   address: string;
   email: string;
   phone: string;
+  mapEmbedUrl?: string;
+
   socialMedia: {
-    instagram: null | string;
-    facebook: null | string;
-    youtube: null | string;
-    pinterest: null | string;
-    x: null | string;
+    facebook?: string | null;
+    instagram?: string | null;
+    youtube?: string | null;
+    pinterest?: string | null;
+    x?: string | null;
   };
+
+  legal?: {
+    title: string;
+    intro: string;
+
+    privacyPolicy: {
+      heading: string;
+      content: string[];
+    };
+
+    termsOfService: {
+      heading: string;
+      content: string[];
+    };
+
+    cookies: {
+      heading: string;
+      content: string[];
+    };
+
+    returns: {
+      heading: string;
+      content: string[];
+    };
+  };
+  customerService?: {
+  title: string;
+  intro: string;
+  sections: {
+    heading: string;
+    content: string[];
+  }[];
 };
+};
+
+
+
+
 
 export type PaginationType = {
   currentPage: number;

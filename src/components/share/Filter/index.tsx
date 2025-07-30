@@ -59,6 +59,14 @@ function Filter() {
           className="text-xs rounded-2xl pl-2 w-24 ring-1 ring-main"
           onChange={handleFilterChange}
         />
+        <select
+          name="discount"
+          className="py-2 px-4 rounded-2xl text-xs font-medium  bg-main"
+          onChange={handleFilterChange}
+        >
+          <option value="">All Products</option>
+          <option value="true">Only Discounts</option>
+        </select>
         {/* <select
           name="type"
           id=""
