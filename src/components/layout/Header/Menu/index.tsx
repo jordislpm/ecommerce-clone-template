@@ -50,7 +50,7 @@ function Menu() {
                             <Link href="/login" onClick={() => setOpen(false)}>Login</Link>
                     }
 
-                    <Link href="/">Cart ({counter})</Link>
+                    <Link href="/cart" onClick={() => setOpen(false)}>Cart ({counter})</Link>
                 </div>
             )}
         </div>

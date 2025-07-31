@@ -55,6 +55,7 @@ export function formatCartResponse(raw: any): Cart {
             name: item.productName?.original ?? "",
             price: item.price?.amount ?? "",
             availability: item.availability,
+            descriptionLines : item.descriptionLines ?? [], 
             image:
               wixMedia.getScaledToFillImageUrl(item.image, 72, 96, {}) ??
               "/product.png",

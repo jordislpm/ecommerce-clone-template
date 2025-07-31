@@ -9,11 +9,14 @@ import { useIsLoggedIn } from '../../../../hooks/client/auth/useIsLoggedIn';
 import { useLogout } from '../../../../hooks/client/auth/useLogout';
 import useAuthStore from '../../../../hooks/client/global/useAuthStore';
 import useCartStore from '../../../../hooks/client/cart/useCartStore';
+import { useModalOptions } from '../../../../hooks/client/global/useModalOptions';
 
 function NavIcons() {
-    const [isProfileOpen, setIsProfileOpen] = useState<boolean>(false);
-    const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
+    // const [isProfileOpen, setIsProfileOpen] = useState<boolean>(false);
+    // const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState(false);
+
+    const {isCartOpen, isProfileOpen, setIsCartOpen, setIsProfileOpen}=useModalOptions()
 
     const { logout } = useLogout();
     const { isLoggedIn, loading, setIsLoggedIn, setLoading } = useAuthStore();
@@ -26,17 +29,13 @@ function NavIcons() {
         if (!isLoggedIn) {
             router.push("/login");  
         } else {
-            if (isCartOpen) setIsCartOpen(false);
-            setIsProfileOpen((prev) => !prev);  
+          setIsProfileOpen() 
         }
     };
 
     // Handle cart toggle
     const handleCart = () => {
-        if (isProfileOpen) {
-            setIsProfileOpen(false);
-        }
-        setIsCartOpen((prev) => !prev);
+       setIsCartOpen();
     };
 
     // Handle logout
@@ -49,7 +48,7 @@ function NavIcons() {
         setIsLoggedIn(false)
         setLoading(false)
         setIsLoading(false);
-        setIsProfileOpen(false);
+        setIsProfileOpen();
         router.push(logoutUrl);
     };
 

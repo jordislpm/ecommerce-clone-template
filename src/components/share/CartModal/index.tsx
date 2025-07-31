@@ -3,13 +3,29 @@ import React, { useEffect } from 'react'
 import CartModalItem from '../CartModalItem';
 import ButtonRect from '../ButtonRect';
 import useCartStore from '../../../hooks/client/cart/useCartStore';
+import { useClientHandleCheckout } from '../../../hooks/client/checkout/useClientHandleCheckout';
+import { useModalOptions } from '../../../hooks/client/global/useModalOptions';
+import { useRouter } from 'next/navigation';
 
 function CartModal() {
 
+  const router = useRouter();
+
+  const { cart, isLoading, removeItem } = useCartStore();
+  const {handleCheckout}=useClientHandleCheckout()
+  const {setIsCartOpen}=useModalOptions()
 
 
+  const actionHandleCheckout = ()=>{
+    setIsCartOpen()
+    handleCheckout()
+  }
 
-  const { cart, isLoading } = useCartStore();
+  const handleViewCart = ()=>{
+    setIsCartOpen()
+    router.push("/cart")
+  }
+
 
 
   // useEffect(()=>{
@@ -48,14 +64,14 @@ function CartModal() {
             <div className=''>
               <div className='flex items-center justify-between font-semibold'>
                 <span className=''>Subtotal</span>
-                <span className=''>${cart?.subtotal.amount}</span>
+                <span className='font-semibold bg-main p-1 rounded-sm'>${cart?.subtotal.amount}</span>
               </div>
               <p className='text-white text-sm mt-2 mb-4 bg-main_second p-1'>
                 Shipping and taxes calculated at checkout.
               </p>
               <div className='flex justify-between'>
-                <ButtonRect text='View Cart' buttonAction={() => { }} />
-                <ButtonRect text='Checkout' type='black' buttonAction={() => { }} />
+                <ButtonRect text='View Cart' buttonAction={handleViewCart} />
+                <ButtonRect text='Checkout' type='black' buttonAction={actionHandleCheckout} />
               </div>
             </div>
           </div>

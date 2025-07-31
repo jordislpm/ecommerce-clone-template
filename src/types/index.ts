@@ -96,6 +96,7 @@ export type CollectionItem = {
 };
 
 export type MyStoreInfoType = {
+  plan: "simple-whatsapp" | "premium-wix";
   title: string;
   description: string;
 
@@ -173,12 +174,27 @@ export type MoneyValue = {
   formattedConvertedAmount: string;
 };
 
+type DescriptionLine = {
+  name: {
+    original: string;
+    translated: string;
+  };
+  colorInfo?: {
+    original: string;
+    translated: string;
+    code?: string;
+  };
+  lineType: string; // Example: "UNRECOGNISED"
+  modifierDescriptionLine: boolean;
+};
+
 export type CartItem = {
   id: string;
   quantity: number;
   name?: string;
   price?: string; // 💡 Safer for rendering (formattedAmount as string)
   image: string;
+  descriptionLines: DescriptionLine[];
   availability: {
     status: string;
     quantityAvailable: number
@@ -282,3 +298,12 @@ export type CartState = {
   addItem: (productId: string, variantId: string, quantity: number) => void;
   removeItem: (itemId: string) => void;
 };
+
+export type ModalState = {
+  isProfileOpen :boolean;
+  setIsProfileOpen: ()=> void;
+  isCartOpen: boolean;
+  setIsCartOpen: ()=> void;
+
+
+}

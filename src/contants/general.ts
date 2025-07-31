@@ -5,9 +5,12 @@ const baseInfo = {
   title: "Oli Store",
   email: "info@olistore.com",
   phone: "+1 829 268 2437",
+
 };
 
-export const myStoreInfo: MyStoreInfoType = Object.assign({}, baseInfo,{
+export const myStoreInfo: MyStoreInfoType = {
+  ...baseInfo,
+  plan: "simple-whatsapp",
   title: baseInfo.title,
   description:
     "Encuentra la mejor ropa para niños con estilo, comodidad y calidad. Ropa para bebés y niños de hasta 12 años, con diseños modernos, divertidos y duraderos.",
@@ -124,7 +127,7 @@ customerService: {
 },
 
 
-});
+};
 
 
 
