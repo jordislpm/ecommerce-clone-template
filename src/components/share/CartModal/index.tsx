@@ -13,7 +13,7 @@ function CartModal() {
 
   const { cart, isLoading, removeItem } = useCartStore();
   const {handleCheckout}=useClientHandleCheckout()
-  const {setIsCartOpen}=useModalOptions()
+  const {setIsCartOpen}=useModalOptions();
 
 
   const actionHandleCheckout = ()=>{
