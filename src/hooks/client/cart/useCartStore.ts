@@ -7,8 +7,9 @@ const useCartStore = () => {
   const getCart = cartStore((state) => state.getCart);
   const isLoading = cartStore((state) => state.isLoading);
   const removeItem = cartStore((state) => state.removeItem);
+  const clearCart = cartStore((state) => state.clearCart);
 
-  return { addItem, cart, counter, getCart, isLoading, removeItem };
+  return { addItem, cart, counter, getCart, isLoading, removeItem, clearCart };
 };
 
 export default useCartStore;

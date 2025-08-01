@@ -3,9 +3,6 @@ import { wixClientServer } from "../../../lib/wixClients/wixClient";
 import { Cart, CartState } from "../../../types";
 import { formatCartResponse } from "../../../lib/format/formatCartResponse";
 
-
-
-
 const appId = process.env.NEXT_PUBLIC_WIX_APP_ID;
 if (!appId) {
   throw new Error("Missing NEXT_PUBLIC_WIX_APP_ID");
@@ -66,7 +63,8 @@ export const cartStore = create<CartState>((set) => ({
     set({ isLoading: true });
     try {
       const wixClient = await wixClientServer();
-      const response = await wixClient.currentCart.removeLineItemsFromCurrentCart([itemId]);
+      const response =
+        await wixClient.currentCart.removeLineItemsFromCurrentCart([itemId]);
 
       const formattedCart = formatCartResponse(response.cart);
       set({
@@ -76,6 +74,23 @@ export const cartStore = create<CartState>((set) => ({
       });
     } catch (err) {
       console.error("Error removing item:", err);
+      set({ isLoading: false });
+    }
+  },
+  clearCart: async () => {
+    set({ isLoading: true });
+    try {
+      const wixClient = await wixClientServer();
+      const response = await wixClient.currentCart.deleteCurrentCart();
+
+      console.log(response);
+      set({
+        cart: null,
+        counter: 0,
+        isLoading: false,
+      });
+    } catch (err) {
+      console.error("Error clearing cart:", err);
       set({ isLoading: false });
     }
   },

@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 export default function CheckoutPage() {
-  const { counter, cart, isLoading, removeItem } = useCartStore();
+  const { counter, cart, isLoading, removeItem, clearCart } = useCartStore();
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
@@ -58,6 +58,8 @@ export default function CheckoutPage() {
   if (confirmed) {
     window.open(whatsappURL, "_blank");
   router.push("/success")
+  clearCart()
+
     // 💡 Delay cart clearing slightly in case the tab switch fails
     setTimeout(() => {
       //clearCart(); // Replace with your actual cart clearing function

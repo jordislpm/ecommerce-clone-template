@@ -21,8 +21,7 @@ async function ProductList({ categoryId, limit, searchParams }: ProductListProps
 
   const {products, pagination} = await getServerProducts(categoryId, limit, searchParams);
 
-  console.log(products)
-  return (
+ return (
     <div className="mt-12 flex gap-x-8 gap-y-16 justify-between flex-wrap">
       {products.map((product: ProductItem) => (
         <ProductCard key={product._id} product={product} />

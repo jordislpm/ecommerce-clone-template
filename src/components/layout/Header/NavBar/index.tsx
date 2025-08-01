@@ -48,7 +48,7 @@ async function NavBar() {
                         >Shop
                         </Link>
                         <Link
-                            href="/"
+                            href="/list?discount=true"
                             className='hover-underline-main text-md text-secundary hover-scale-link'
                         >Deals
                         </Link>

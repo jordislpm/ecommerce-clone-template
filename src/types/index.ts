@@ -297,6 +297,7 @@ export type CartState = {
   getCart: () => void;
   addItem: (productId: string, variantId: string, quantity: number) => void;
   removeItem: (itemId: string) => void;
+  clearCart:()=> void;
 };
 
 export type ModalState = {

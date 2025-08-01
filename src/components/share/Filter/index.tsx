@@ -1,6 +1,6 @@
 "use client";
 import { usePathname, useSearchParams, useRouter } from 'next/navigation';
-import React from 'react'
+import React, { useEffect } from 'react'
 import useCollectionsStore from '../../../hooks/client/global/useCollectionsStore';
 
 function Filter() {
@@ -10,15 +10,20 @@ function Filter() {
 
 
   const { collections } = useCollectionsStore();
-
-  const handleFilterChange = (
+   const handleFilterChange = (
     e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
   ) => {
     const { name, value } = e.target;
-    const params = new URLSearchParams(searchParams);
+     const params = new URLSearchParams(searchParams);
     params.set(name, value);
     replace(`${pathname}?${params.toString()}`);
+
+   
   };
+
+   useEffect(()=>{
+    console.log(searchParams)
+   },[searchParams])
 
   return (
     <div className="mt-12 flex justify-between flex-col md:flex-row gap-6 md:gap-0">

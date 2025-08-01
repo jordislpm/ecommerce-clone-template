@@ -52,6 +52,6 @@ export async function getWixProducts({
     );
   }
 
-  const res = await productQuery.find();
+    const res = await productQuery.find();
   return res;
 }

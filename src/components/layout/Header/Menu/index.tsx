@@ -40,7 +40,7 @@ function Menu() {
                 <div className='absolute bg-main text-secundary left-0 top-20 w-full h-[calc(100vh-80px)] flex flex-col items-center justify-center gap-8 text-xl z-20'>
                     <Link href="/" onClick={() => setOpen(false)}>Home</Link>
                     <Link href="/list" onClick={() => setOpen(false)}>Shop</Link>
-                    <Link href="/" onClick={() => setOpen(false)}>Deals</Link>
+                    <Link href="/list?discount=true" onClick={() => setOpen(false)}>Deals</Link>
                     <Link href="/about" onClick={() => setOpen(false)}>About</Link>
                     <Link href="/contact" onClick={() => setOpen(false)}>Contact</Link>
                     {
