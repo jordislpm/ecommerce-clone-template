@@ -8,22 +8,22 @@ import { myStoreInfo } from "../../contants/general";
 
 
 function SuccessPage() {
-    const searchParams = useSearchParams();
+    // const searchParams = useSearchParams();
     const router = useRouter();
 
-    const orderId = searchParams.get("orderId");
+    // const orderId = searchParams.get("orderId");
 
-    useEffect(() => {
-        if (!orderId) return;
+    // useEffect(() => {
+    //     if (!orderId) return;
 
-        const timer = setTimeout(() => {
-            router.push("/orders/" + orderId);
-        }, 5000);
+    //     const timer = setTimeout(() => {
+    //         router.push("/orders/" + orderId);
+    //     }, 5000);
 
-        return () => {
-            clearTimeout(timer);
-        };
-    }, [orderId, router]);
+    //     return () => {
+    //         clearTimeout(timer);
+    //     };
+    // }, [orderId, router]);
 
     return (
         <div className="flex flex-col gap-6 items-center justify-center h-[calc(100vh-180px)]">
