@@ -143,7 +143,7 @@ export const slidesData: SlideType[] = [
     title: "Summer Fun for Kids",
     description: "Cool outfits up to 50% off! ☀️👕🩳",
     img: "https://images.pexels.com/photos/32859436/pexels-photo-32859436.jpeg",
-    url: "/",
+    url: "/list?cat=summer",
     bg: "bg-gradient-to-r from-yellow-100 to-pink-100",
   },
   {
@@ -151,7 +151,7 @@ export const slidesData: SlideType[] = [
     title: "Warm & Cozy for Winter",
     description: "Bundle up! Save up to 50% on winter styles ❄️🧤🧣",
     img: "https://images.pexels.com/photos/1648375/pexels-photo-1648375.jpeg?auto=compress&cs=tinysrgb&w=800",
-    url: "/",
+    url: "/list?cat=winter",
     bg: "bg-gradient-to-r from-blue-100 to-purple-100",
   },
   {
@@ -159,7 +159,7 @@ export const slidesData: SlideType[] = [
     title: "Fresh Spring Looks",
     description: "New arrivals blooming! 🌸 Get up to 50% off",
     img: "https://images.pexels.com/photos/7850510/pexels-photo-7850510.jpeg",
-    url: "/",
+    url: "/list?cat=spring",
     bg: "bg-gradient-to-r from-green-100 to-pink-100",
   },
 ];

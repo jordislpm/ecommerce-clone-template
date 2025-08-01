@@ -23,41 +23,14 @@ function Footer() {
           <span className="font-semibold">{myStoreInfo.email}</span>
           <span className="font-semibold">{myStoreInfo.phone}</span>
           <div className="flex gap-6">
-
-
             {socialIcons.map(({ name, icon }) => {
-                                        const url = myStoreInfo.socialMedia[name];
-                                        return url ? (
-                                            <a key={name} href={url} target="_blank" rel="noopener noreferrer">
-                                                <Image src={icon} alt={`${name} icon`} width={16} height={16} />
-                                            </a>
-                                        ) : null;
-                                    })}
-            {/* {myStoreInfo.socialMedia.facebook &&
-              <a href={myStoreInfo.socialMedia.facebook} target='_blank'>
-                <Image src="/facebook.png" alt="" width={16} height={16} />
-              </a>
-            }
-            {myStoreInfo.socialMedia.instagram &&
-              <a href={myStoreInfo.socialMedia.instagram} target='_blank'>
-                <Image src="/instagram.png" alt="" width={16} height={16} />
-              </a>
-            }
-            {myStoreInfo.socialMedia.youtube &&
-              <a href={myStoreInfo.socialMedia.youtube} target='_blank'>
-                <Image src="/youtube.png" alt="" width={16} height={16} />
-              </a>
-            }
-            {myStoreInfo.socialMedia.pinterest &&
-              <a href={myStoreInfo.socialMedia.pinterest} target='_blank'>
-                <Image src="/pinterest.png" alt="" width={16} height={16} />
-              </a>
-            }
-            {myStoreInfo.socialMedia.x &&
-              <a href={myStoreInfo.socialMedia.x} target='_blank'>
-                <Image src="/x.png" alt="" width={16} height={16} />
-              </a>
-            } */}
+              const url = myStoreInfo.socialMedia[name];
+              return url ? (
+                <a key={name} href={url} target="_blank" rel="noopener noreferrer">
+                  <Image src={icon} alt={`${name} icon`} width={16} height={16} />
+                </a>
+              ) : null;
+            })}
           </div>
         </div>
         {/* CENTER */}
@@ -66,7 +39,7 @@ function Footer() {
             <h1 className="font-medium text-lg">COMPANY</h1>
             <div className="flex flex-col gap-6">
               <Link className='hover-underline-secundary' href="/about">About Us</Link>
-              <Link className='hover-underline-secundary' href="/careers">Careers</Link>
+              <Link className='hover-underline-secundary' href="/list?discount=true">Deals</Link>
               <Link className='hover-underline-secundary' href="/affiliates">Affiliates</Link>
               <Link className='hover-underline-secundary' href="/blog">Blog</Link>
               <Link className='hover-underline-secundary' href="/contact">Contact Us</Link>
