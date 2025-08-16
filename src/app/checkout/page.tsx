@@ -18,7 +18,7 @@ export default function CheckoutPage() {
     return;
   }
 
-  const phoneNumber = "14168774127";
+  const phoneNumber = "16476679262";
 
   let message = `Nuevo pedido:\n\n`;
   message += `Nombre: ${name}\n`;
