@@ -93,7 +93,20 @@ function Footer() {
       </div>
       {/* BOTTOM */}
       <div className="flex flex-col md:flex-row items-center justify-between gap-8 mt-16">
-        <a href='https://www.jordisdev.com' target="_blank" className="cursor:pointer">© 2025 jordisdev.com</a>
+        <div className="text-sm text-gray-500">
+          <span>© {new Date().getFullYear()} Oli Store. All rights reserved. </span>
+          <span className="block md:inline mt-1 md:mt-0 text-xs">
+            Developed by{' '}
+            <a
+              href="https://www.jordisdev.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-lama hover:underline"
+            >
+              jordisdev.com
+            </a>
+          </span>
+        </div>
         <div className="flex flex-col gap-8 md:flex-row">
           <div className="">
             <span className="text-gray-500 mr-4">Language</span>
